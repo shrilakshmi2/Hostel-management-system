@@ -1,0 +1,75 @@
+<div id="application" *ngIf="mode=='apply'">
+    <div id="application_inner">
+        <h3>Please fill this from</h3>
+        <div class="application_personaldetails">
+            <h3>Personal Details</h3>
+            <input type="text" placeholder="Enter your name" id="application_personaldetails_name">
+            <input  placeholder="Enter mobile number" type="number" id="application_personaldetails_mobile">
+            <input type="email" placeholder="Enter Email-id" id="application_personaldetails_email">
+            <input type="text" placeholder="Gaurdian Name" id="application_personaldetails_gname">
+            <input  placeholder="Adhar Number" type="number" id="application_personaldetails_adhar">
+        </div>
+        <div id="application_adhar_pic">
+            <h3>Upload Your Adhar*</h3>
+            <button id="application_adhar_pic_btn" (click)="application_adhar_pic_inp.click()">Upload</button>
+            <input type="file" id="application_adhar_pic_inp" (change)="upload_adhar($event)" style="position: absolute;top: -100em;" #application_adhar_pic_inp>
+            <p>{{adhar.name}}</p>
+            <button (click)="remove_adhar()">remove</button>
+        </div>
+        <div id="application_adress">
+            <h3>Address</h3>
+            <input type="text" placeholder="Current living" id="app_addinp_address_main" #emp_addinp_address_main>
+            <input type="text" placeholder="Country" id="app_addinp_address_country" #emp_addinp_address_country>
+            <input type="text" placeholder="State" id="app_addinp_address_state" #emp_addinp_address_state>
+            <input type="text" placeholder="District" id="emp_addinp_address_dis" #emp_addinp_address_dis>
+            <input type="text" id="app_addinp_address_pin" placeholder="PIN" #emp_addinp_address_pin>
+        </div>
+        <div id="application_college">
+            <input type="text" placeholder="Enter Your collage Reg-ID" id="application_college_usn">
+            <input type="text" placeholder="Enter collage name" id="application_college_cname">
+            <p>Note: ID card is asked on arrival</p>
+        </div>
+        <div id="application_Profile_pic">
+            <h3>Upload Your photo*</h3>
+            <button id="application_Profile_pic_btn" (click)="application_Profile_pic_inp.click()">Upload</button>
+            <input type="file" id="application_profile_pic_inp" (change)="upload_profile($event)" style="position: absolute;top: -100em;" #application_Profile_pic_inp>
+            <p>{{profile.name}}</p>
+            <button (click)="remove_profile()">remove</button>
+        </div>
+        <div id="application_btns">
+            <button (click)="upload_application(application_msg,$event)">Apply</button>
+            <button (click)="reset_application()">Reset</button>
+        </div>
+        <p id="application_msg" #application_msg></p>
+    </div>
+</div>
+
+<div id="check_out" *ngIf="mode=='check'">
+    <div id="check" >
+        <input type="text" placeholder="Enter the application ID" id="application_check_inp" #application_check_inp>
+        <button (click)="checkstatus(application_check_inp.value,$event,app_check_msg)">Check status</button>
+        <p #app_check_msg></p>
+    </div>
+</div>
+
+<div id="application_success_outer" *ngIf="application_status">
+    <div id="application_success_inner">
+        <h3 (click)="application_status=false">X</h3>
+        <h3>Success!!!</h3>
+        <p>Your application is subbmitted.</p>
+        <p>Wait for our faculty review it</p>
+        <p>Thanks For your patience</p>
+    </div>
+</div>
+
+<div id="application_checkres_outer" *ngIf="check.isdone">
+    <div id="application_checkres_inner">
+        <h3 (click)="check.isdone=false">X</h3>
+        <h3>Got it!!!</h3>
+        <p>Name:> {{check.obj.name}}</p>
+        <p>application ID:> {{check.obj.id}}</p>
+        <p>Status:> <strong>{{check.obj.msg}}</strong></p>
+        <p>Mobile:> {{check.obj.ph}}</p>
+        <p>email:> {{check.obj.email}}</p>
+    </div>
+</div>

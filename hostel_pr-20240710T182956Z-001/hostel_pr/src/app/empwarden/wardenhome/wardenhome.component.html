@@ -1,0 +1,84 @@
+<div id="warden_welcome_msg">
+    <p>Welcome </p>
+    <p>Hope you are doing well today :)</p>
+</div>
+<div id="warden_logs">
+    <div *ngIf="currentlogs.fetched" id="warden_logs_fetched">
+        <h3>This months logs are here</h3>
+        <div class="filters">
+            <input type="text" placeholder="search here" #warden_logs_search_inp (keyup.enter)="warden_filters_serach_btn.click()">
+            <p (click)="setlogsearchmode(1,warden_logs_search_inp,$event)" [class]="filters_class['1']">Name</p>
+            <p (click)="setlogsearchmode(2,warden_logs_search_inp,$event)" [class]="filters_class['2']">ID</p>
+            <p (click)="setlogsearchmode(3,warden_logs_search_inp,$event)" [class]="filters_class['3']">Date</p>
+            <p (click)="setlogsearchmode(4,warden_logs_search_inp,$event)">Yesterday</p>
+            <img src="" alt="" >
+            <button (click)="searchinlogs(warden_logs_search_inp.value,$event)" #warden_filters_serach_btn>Search</button>
+            <button (click)="resetlogsearch()">Reset</button>
+        </div>
+        <div class="logs">
+            <div class="logs_card">
+                <p>SL.NO</p>
+                <p>ID</p>
+                <p>NAME</p>
+                <p>Time</p>
+            </div>
+            <div class="logs_card" *ngFor="let item of logssearch.result;let i=index">
+                <p>{{i+1}}</p>
+                <p>{{item.log_id}}</p>
+                <p>{{item.name}}</p>
+                <p>{{item.timestamp}}</p>
+            </div>
+        </div>
+    </div>
+    <p *ngIf="!currentlogs.fetched">Unable to fetch the logs :(</p>
+</div>
+<div class="curreststength">
+    <h3 style="color: black;">Hostel strength</h3>
+    <div id="warden_stregth_outer">
+        <div id="warden_stregth_inner">
+            <p></p>
+        </div>
+    </div>
+    <div id="curreststength_stats">
+        <p>Current Strength:>{{strength.str}}</p>
+        <p>Total Strength:> {{strength.total}}</p>
+    </div>
+    <p *ngIf="!strength.fetched">Unable to Fetch :(</p>
+</div>
+
+<div class="warden_applications_meta_home">
+    <h3>Applications</h3>
+    <p>Total Applications recieved till now:> {{applications.total}}</p>
+    <p>Month wise data, this year</p>
+    <div id="warden_app_table">
+        <div class="warden_app_table_card">
+            <p>Month</p>
+            <p>Applications</p>
+        </div>
+        <div *ngFor="let item of applications.counts" class="warden_app_table_card">
+            <p>{{item.month}}</p>
+            <p>{{item.count}}</p>
+        </div>
+    </div>
+    <p *ngIf="!applications.fetched">Unable to fetch :(</p>
+</div>
+
+<div class="warden_insideview">
+    <h3>Persons active in hostel</h3>
+    <p>Students:> {{inside_view.st}}</p>
+    <p>Employees:> {{inside_view.emp}}</p>
+    <p *ngIf="!inside_view.fetched">Unable to fetch :(</p>
+</div>
+
+<div id="warden_schedule">
+    <h3>Set a remainder</h3>
+    <input type="text" placeholder="remainder title" #warden_schedule_title>
+    <input type="text" placeholder="Time" #warden_schedule_time>
+    <p>*For time format is dd-mm-yyyy within current year</p>
+    <p>*This may fail if server is restarted</p>
+    <p>*The remainder will be sent at 9:00am on that day</p>
+    <button (click)="schedule_remiander(warden_schedule_title.value,warden_schedule_time.value,$event)">Schedule</button>
+</div>
+
+
+<!--  -->

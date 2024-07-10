@@ -1,0 +1,7 @@
+<div>
+    <p (click)="done()">X</p>
+    <p #sendingto id="Sendingto" [class]="mail.unq">{{mail.mail}}</p>
+    <textarea cols="30" rows="10" placeholder="Message to Send" #msg class="msg"></textarea>
+    <button (click)="sendmail(sendingto,msg,resmsg)">Send</button>
+    <p #resmsg></p>
+</div>

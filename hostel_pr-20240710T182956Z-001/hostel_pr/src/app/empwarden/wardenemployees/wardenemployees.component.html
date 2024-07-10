@@ -1,0 +1,213 @@
+<div id="employees_meta">
+    <p>Total emolyees in hostel:> {{metadata.total}}</p>
+    <p>Currentrly active:> {{metadata.in}}</p>
+    <p>Inactive:> {{metadata.out}}</p>
+    <div>
+        <button (click)="addemp.status=true">Add new</button>
+        <button (click)="update_sal.status=true">Update Salery</button>
+    </div>
+</div>
+
+<p *ngIf="!metadata.fetched">Unable to fetch data :(</p>
+
+
+<div id="emp_table">
+    <h3>Employee details</h3>
+    <div id="emp_table_search">
+        <input type="text" placeholder="Search Here.." #emp_table_inp (keydown.enter)="emp_table_btn.click()">
+        <p [class]="metasearch.class['1']" (click)="emp_search_mode('1')">Name</p>
+        <p [class]="metasearch.class['2']" (click)="emp_search_mode('2')">Mobile</p>
+        <p [class]="metasearch.class['3']" (click)="emp_search_mode('3')">Designation</p>
+        <button (click)="emp_table_search(emp_table_inp.value)" #emp_table_btn>Search</button>
+        <button (click)="emp_table_search_reset()">Reset</button>
+    </div>
+    <div id="emp_tableres">
+        <div class="emp_table_res_card">
+            <p>Mobile No</p>
+            <p>Name</p>
+            <p>Status</p>
+            <p>Designation</p>
+            <p>Last salery</p>
+            <div>
+                <p>Actions</p>
+            </div>
+        </div>
+        <div class="emp_table_res_card" *ngFor="let item of metasearch.logs">
+            <p>{{item['Mobile_No']}}</p>
+            <p>{{item['Name']}}</p>
+            <p>{{item['Status']}}</p>
+            <p>{{item['Designation']}}</p>
+            <p>{{item['cur_sal']['date']}}</p>
+            <div>
+                <button (click)="student_view(item)">View</button>
+                <button (click)="sendmail_ini(item.E_mail)">mail</button>
+                <button (click)="remove_student(item['Mobile_No'],item['Name'])">Remove</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- abs -->
+<div id="add_emp_w_outer" *ngIf="addemp.status">
+    <div id="add_emp_w_inner">
+        <h3 (click)="calcel_add_emp()">X</h3>
+        <h2>Fill this form</h2>
+        <div id="add_emp_details">
+            <h4>*Details</h4>
+            <input type="text" placeholder="*Name of employee" id="emp_addinp_name" #emp_addinp_name>
+            <input type="text" placeholder="*Gaurdian name of employee" id="emp_addinp_gname" #emp_addinp_gname>
+            <input type="number" placeholder="*Phone number" id="emp_addinp_phone" #emp_addinp_phone>
+            <input type="text" placeholder="*Email" id="emp_addinp_email" #emp_addinp_email>
+            <input type="number" placeholder="*Adhar number" id="emp_addinp_adhar" #emp_addinp_adhar>
+        </div>
+        <div id="emp_addinp_address">
+            <h4>*Address</h4>
+            <input type="text" placeholder="Current living" id="emp_addinp_address_main" #emp_addinp_address_main>
+            <input type="text" placeholder="Country" id="emp_addinp_address_country" #emp_addinp_address_country>
+            <input type="text" placeholder="State" id="emp_addinp_address_state" #emp_addinp_address_state>
+            <input type="text" placeholder="District" id="emp_addinp_address_dis" #emp_addinp_address_dis>
+            <input type="text" id="emp_addinp_address_pin" placeholder="PIN" #emp_addinp_address_pin>
+        </div>
+        <div id="emp_addinp_des">
+            <h4>*Designation</h4>
+            <div>
+                <input type="radio" name="emp_des" value="Warden" id="emp_addinp_des_warden"><label for="emp_addinp_des_warden">Warden</label>
+            <input type="radio" name="emp_des" value="Co-warden" id="emp_addinp_des_cwarden"><label for="emp_addinp_des_cwarden">Co-warden</label>
+            <input type="radio" name="emp_des" value="Assistant" id="emp_addinp_des_assistant"><label for="emp_addinp_des_assistant">Assistant</label>
+            <input type="radio" name="emp_des" value="Others" id="emp_addinp_des_others"><label for="emp_addinp_des_others">Others</label>
+            </div>
+        </div>
+        <div id="emp_addinp_profile">
+            <h4>Profile picture</h4>
+            <button (click)="emp_addinp_profile_input.click()">Upload</button>
+            <input type="file" style="position: absolute;top: -100em;" id="emp_addinp_profile_input" #emp_addinp_profile_input (change)="addprofile_emp_add($event)">
+            <p>{{addemp.profile.name}}</p>
+        </div>
+        <button (click)="add_emp_w_final()">Add employee</button>
+    </div>
+</div>
+
+
+<div id="st_view_outer" *ngIf="st_view.status">
+    <div id="st_view_inner">
+        <h3 (click)="cancel_st_view()">X</h3>
+        <div id="st_view_profile">
+            <div id="st_view_profile_pic">
+                <div>
+                    <img [src]="st_view.data['profile_pic']" alt="Profile_pic">
+                </div>
+            </div>
+            <div id="st_view_profile_details">
+                <p>Name:> {{st_view.data['Name']}}</p>
+                <p>ID:> {{st_view.data['Mobile_No']}}</p>
+                <p>Mobile:> {{st_view.data['Mobile_No']}}</p>
+                <p>Email:> {{st_view.data['E_mail']}}</p>
+                <p>Status:> {{st_view.data['Status']}}</p>
+                <p>Adhar:> {{st_view.data['Aadhar']}}</p>
+                <p>Salery(last paid):> {{st_view.data['cur_sal']['date']}}</p>
+                <p>Address:> {{st_view.data['Address']['cl']}},{{st_view.data['Address']['country']}},{{st_view.data['Address']['state']}},{{st_view.data['Address']['dist']}},{{st_view.data['Address']['pin']}}</p>
+                <p>Gaurdian:> {{st_view.data['Gaurdian_Name']}}</p>
+            </div>
+        </div>
+
+
+        <div id="st_view_log_table">
+            <h2>Logs</h2>
+            <div id="st_view_logs_search">
+                <input type="text" placeholder="Search here" #st_view_logs_search_inp (keyup.enter)="st_view_logs_search_btn.click()">
+                <p (click)="change_searchmode_st_logs('1',st_view_logs_search_inp)" [class]="st_searchs.log_class['1']">Status</p>
+                <p (click)="change_searchmode_st_logs('2',st_view_logs_search_inp)" [class]="st_searchs.log_class['2']">Date</p>
+                <button (click)="search_in_st_logs(st_view_logs_search_inp.value)" #st_view_logs_search_btn>Search</button>
+                <button (click)="reset_search_st_logs()">Reset</button>
+            </div>
+            <div id="st_view_logs_res">
+                <div class="st_view_logs_res_card">
+                    <p>ID</p>
+                    <p>Status</p>
+                    <p>Message</p>
+                    <p>Date</p>
+                </div>
+                <div class="st_view_logs_res_card" *ngFor="let i of st_searchs.logs">
+                    <p>{{i['id']}}</p>
+                    <p>{{i['status']}}</p>
+                    <p>{{i['reason']}}</p>
+                    <p>{{i['time']}}</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="st_view_fee_table">
+            <h2>Fee logs</h2>
+            <div id="st_view_fee_search">
+                <input type="text" placeholder="Search here *fromat dd-mm-yyyy" #st_view_fees_search_inp (keyup.enter)="st_view_fees_search_btn.click()">
+                <p class="selected_meta_search">Date</p>
+                <button (click)="search_in_st_fees(st_view_fees_search_inp.value)" #st_view_fees_search_btn>Search</button>
+                <button (click)="reset_in_st_fees()">Reset</button>
+            </div>
+            <div id="st_view_fee_res">
+                <div class="st_view_fee_res_card">
+                    <p>ID</p>
+                    <p>Payment ID</p>
+                    <p>Date</p>
+                </div>
+                <div class="st_view_fee_res_card" *ngFor="let i of st_searchs.fees">
+                    <p>{{i['id']}}</p>
+                    <p>{{i['p_id']}}</p>
+                    <p>{{i['date']}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="confirmation_outer" *ngIf="rm_emp.status">
+    <div id="confirmation_inner">
+        <p>Removing employee {{rm_emp.id}}({{rm_emp.name}})</p>
+        <p>Are you sure?</p>
+        <div>
+            <button (click)="remove_student_final()">Remove</button>
+            <button (click)="cnacel_rm_student()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="mailsending_outer" *ngIf="mailsend.status">
+    <div id="mailsending_inner">
+        <p>To:> {{mailsend.to}}</p>
+        <textarea id="" cols="30" rows="10" #mail_msg placeholder="Type here"></textarea>
+        <div>
+            <button (click)="sendmail_final(mail_msg.value,$event)">Send</button>
+            <button (click)="sendmail_cancel()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="update_sal_outer" *ngIf="update_sal.status">
+    <div id="update_sal_inner">
+        <h2 (click)="cancel_update_sal()">x</h2>
+        <h3>Salary updates register</h3>
+        <input type="text" placeholder="Employee ID" (input)="Show_suggesion($event,up_id,up_name,up_des)" #up_id>
+        <input type="text" placeholder="Employee name" #up_name>
+        <input type="text" placeholder="Designation" #up_des>
+        <input type="text" placeholder="Payment ID" #pid>
+        <div>
+            <button (click)="update_sal_final(pid.value)">Update</button>
+            <button (click)="cancel_update_sal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="update_sal_suggesion" *ngIf="update_sal.sug.status">
+    <h3 (click)="cancel_suggesion()">X</h3>
+    <div class="update_sal_suggesion_card" *ngFor="let item of update_sal.sug.res">
+        <div (click)="autofill(item)">
+            <p>{{item['Mobile_No']}}</p>
+            <p>{{item['Name']}}</p>
+            <p>{{item['Designation']}}</p>
+            <p>{{item['E_mail']}}</p>
+        </div>
+    </div>
+</div>

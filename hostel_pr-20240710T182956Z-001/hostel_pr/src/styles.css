@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+.showfloatingmsg{
+    position: fixed;
+    height: 70px;
+    width: 100vw;
+    top: 10%;
+    animation: floatmsg alternate 1s;
+    z-index: 99999;
+    display: grid;
+    place-items: center;
+
+}
+.showfloatingmsg p{
+    margin-top: 10px;
+    border-radius: 5px;
+    height: 50px;
+    min-width: 300px;
+    display: grid;
+    font-size: 17px;
+    place-items: center;
+}
+@keyframes floatmsg {
+    0%{
+        top: 0%;
+    }
+    100%{
+        top: 10%;
+    }
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+button{
+    cursor: pointer;
+}

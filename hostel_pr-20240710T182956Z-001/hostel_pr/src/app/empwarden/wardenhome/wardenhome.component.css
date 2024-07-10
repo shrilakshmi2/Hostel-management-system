@@ -1,0 +1,217 @@
+
+.filters{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.71);
+    height: 50px;
+    width: 70%;
+    color: wheat;
+    border-radius: 5px;
+}
+.logs_card{
+    display: flex;
+    height: 50px;
+    background-color: rgba(189, 183, 107, 0.544);
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    border-radius: 5px;
+}
+.logs_card p{
+    width: 25%;
+    margin-left: 10px;
+}
+.logs_card:nth-child(1){
+    margin-left: 0px;
+    height: 50px;
+    background-color: rgba(240, 248, 255, 0.603);
+    padding-left:20px ;
+}
+.logs_card:nth-child(1) p{
+    background-color: transparent;
+}
+div{
+    margin-left: 20px;
+}
+#warden_welcome_msg{
+    margin-top: 0px;
+    margin-right: 10px;
+    background-color: rgba(255, 235, 205, 0.767);
+    color: black;
+    height: 100px;
+    display: grid;
+    place-items: center;
+    border-radius: 5px;
+}
+#warden_welcome_msg p{
+    margin: 10px;
+    font-size: large;
+}
+#warden_logs{
+    background-color: rgba(255, 235, 205, 0.767);
+    color: black;
+    border-radius: 10px;
+    margin-right: 10px;
+    height: 100vh;
+}
+#warden_logs_fetched h3{
+    margin-top: 10px;
+}
+.filters input{
+    height: 96%;
+    background-color: rgba(0, 0, 0, 0.71);
+    border: none;
+    color: white;
+    width: 40%;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.filters p{
+    display: grid;
+    place-items: center;
+    width: 80px;
+    height: 100%;
+    margin-top: 0px;
+}
+.warden_filters_selected{
+    background-color: rgba(240, 248, 255, 0.364);
+}
+.filters button{
+    margin-left: 10px;
+    width: 80px;
+    font-size: medium;
+}
+.logs{
+    height: 80vh;
+    border-radius: 10px;
+    overflow: scroll;
+    margin: 20px;
+    background-color: rgba(0, 0, 0, 0.584);
+}
+.curreststength{
+    margin-top: 10px;
+    background-color: rgba(255, 235, 205, 0.767);
+    margin-right: 10px;
+    border-radius: 5px;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ #warden_stregth_outer{
+    margin: 20px 0px;
+    background-color: white;
+    border-radius: 5px;
+    width: 300px;
+    height: 60px;
+}
+#warden_stregth_inner{
+    height: 50%;
+    color: black;
+    margin: 0px 5px;
+    border-radius: 5px;
+}
+.curreststength #curreststength_stats{
+    display: flex;
+}
+.curreststength #curreststength_stats p{
+    margin-right: 50px;
+    color: black;
+    font-size: 17px;
+}
+.warden_applications_meta_home{
+    margin-top: 10px;
+    background-color: rgba(255, 235, 205, 0.767);
+    margin-right: 10px;
+    border-radius: 5px;
+    height: 50vh;
+}
+.warden_applications_meta_home h3{
+    width: 30%;
+    margin: 20px 20px;
+    color: black;
+}
+.warden_applications_meta_home p{
+    color: black;
+    font-size: 17px;
+    margin-left: 30px;
+}
+.warden_applications_meta_home #warden_app_table{
+    margin-left: 30px;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.568);
+    width: 50%;
+    height: 30vh;
+    border-radius:5px;
+    overflow: scroll;
+    border: none;
+}
+#warden_app_table div{
+    height: 50px;
+    background-color: rgba(240, 248, 255, 0.645);
+    border: none;
+    display: flex;
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+#warden_app_table div p{
+    width: 50%;
+    display: grid;
+    place-items: center;
+}
+.warden_insideview{
+    margin-top: 10px;
+    background-color: rgba(255, 235, 205, 0.767);
+    margin-right: 10px;
+    border-radius: 5px;
+    height: 25vh;
+    color: black;
+    font-size: 17px;
+}
+.warden_insideview h3{
+    margin-top: 20px;
+    margin-left: 20px;
+
+}
+.warden_insideview p{
+    margin-top: 20px;
+    margin-left: 30px;
+}
+#warden_schedule{
+    margin-top: 20px;
+    background-color: rgba(255, 235, 205, 0.767);
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    height: 50vh;
+    color: black;
+    font-size: 17px;
+    display: flex;
+    flex-direction: column;
+}
+#warden_schedule h3{
+    margin-left: 20px;
+}
+#warden_schedule input{
+    height: 30px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    width: 30%;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+#warden_schedule p{
+    margin-left: 30px;
+    margin-top: 0px;
+    height: 30px;
+}
+#warden_schedule button{
+    height: 40px;
+    width: 100px;
+    border: none;
+    background-color: aquamarine;
+    color: black;
+    border-radius: 5px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+}

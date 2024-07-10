@@ -1,0 +1,361 @@
+#w_pr_change_details_outer{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(240, 248, 255, 0.593);
+    display: grid;
+    place-items: center;
+    top: 0px;
+    left: 0px;
+    backdrop-filter: blur(5px);
+}
+
+#w_pr_change_details_inner{
+    height: 400px;
+    width: 40vw;
+    background-color: rgb(255, 235, 205);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    overflow: hidden;
+    animation: changes both 1s ;
+}
+@keyframes changes {
+    0%{
+        height: 0px;
+    }
+    100%{
+        height: 400px;
+    }
+}
+#w_pr_change_details_inner input{
+    height: 40px;
+    width: 70%;
+    background-color: black;
+    color: aliceblue;
+    margin-top: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+#w_pr_change_details_inner h3{
+    margin-top: 0px;
+    margin-left: 0px;
+    height: 40px;
+    width: 50px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgba(165, 42, 42, 0.689);
+    display: grid;
+    place-items: center;
+}
+#w_pr_change_details_inner h3:hover{
+    background-color: rgba(165, 42, 42);
+}
+#w_pr_change_details_inner p{
+    height: 30px;
+    width: 100%;
+    font-size: 16px;
+}
+#w_pr_change_details_btn{
+    height: 40px;
+    width: 100px;
+    margin-left: 20px;
+    margin-top: 10px;
+    background-color: rgba(127, 255, 212, 0.855);
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+}
+#w_pr_change_details_inner .w_pr_controllers button:nth-child(1){
+    height: 40px;
+    width: 100px;
+    margin-left: 20px;
+    margin-top: 10px;
+    background-color: rgba(40, 125, 29, 0.855);
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+#w_pr_change_details_inner .w_pr_controllers button:nth-child(2){
+    height: 40px;
+    width: 100px;
+    margin-left: 20px;
+    margin-top: 10px;
+    background-color: rgba(137, 55, 37, 0.855);
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+#w_pr_change_pass_outer{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(240, 248, 255, 0.593);
+    display: grid;
+    place-items: center;
+    top: 0px;
+    left: 0px;
+    backdrop-filter: blur(5px);
+}
+#w_pr_change_pass_inner{
+    height: 570px;
+    width: 40vw;
+    background-color: rgba(0, 0, 0, 0.934);
+    border-radius: 10px;
+    color: whitesmoke;
+    animation: changepass alternate 1s;
+    overflow: hidden;
+}
+@keyframes changepass {
+    0%{
+        height: 0px;
+    }
+    100%{
+        height: 570px;
+    }
+}
+#w_pr_change_pass_inner h3{
+    margin-top: 0px;
+    margin-left: 0px;
+    height: 40px;
+    width: 50px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgba(165, 42, 42, 0.689);
+    display: grid;
+    place-items: center;
+}
+#w_pr_change_pass_inner h3:hover{
+    background-color: rgba(165, 42, 42);
+}
+#w_pr_change_pass_inner p{
+    margin-top: 10px;
+    margin-left: 20px;
+    height: 30px;
+    font-size: 16px;
+}
+#w_pr_change_pass_inner button{
+    border: none;
+    background-color: rgba(0, 128, 0, 0.673);
+    height: 40px;
+    font-size: 16px;
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+#w_pr_change_pass_inner .enterotp{
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 60%;
+    height: auto;
+    background-color: rgba(240, 248, 255, 0.744);
+    color: black;
+    border-radius: 5px;
+}
+#w_pr_change_pass_inner .enterotp p{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#w_pr_change_pass_inner .enterotp div{
+    display: flex;
+}
+#w_pr_change_pass_inner .enterotp div input{
+    background-color: black;
+    border-radius: 5px;
+    border: white 1px solid;
+    height: 30px;
+    width: 30px;
+    color: white;
+    margin-left: 20px;
+}
+#w_pr_change_pass_inner .newpass{
+    display: flex;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    width: 70%;
+    border-radius: 5px;
+    flex-direction: column;
+    background-color: rgba(240, 248, 255, 0.744);
+}
+#w_pr_change_pass_inner .newpass input{
+    height: 30px;
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    color: white;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#w_pr_change_pass_inner .newpass button{
+    margin-bottom: 10px;
+}
+
+#w_pr_main_inner{
+    height: auto;
+    width: 50vw;
+    background-color: rgba(255, 235, 205, 0.767);
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 300px 50px 250px;
+    grid-template-columns: 200px 1fr;
+}
+#w_pr_main_inner .w_profile_pic{
+    width: 100%;
+    height: 100px;
+    display: grid;
+    place-items: center;
+}
+#w_pr_main_inner .w_profile_pic div{
+    height: 150px;
+    width: 150px;
+    margin-top: 20px;
+    border-radius: 50%;
+    background-color: black;
+    overflow: hidden;
+}
+#w_pr_main_inner .w_profile_pic div img{
+    height:150px ;
+}
+.w_pr_details{
+    background-color: rgba(0, 0, 0, 0.722);
+    margin-top: 20px;
+    margin-right: 20px;
+    height: auto;
+    width: 90%;
+    border-radius: 5px;
+}
+.w_pr_details p{
+margin-left: 20px;
+margin-top: 10px;
+height: 30px;
+width: 100%;
+}
+.w_pr_change{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    height: 100%;
+    width: 250px;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-top: 20px;
+    display: flex;
+}
+.w_pr_change button{
+    height: 30px;
+    width: 150px;
+    cursor: pointer;
+    background-color: aquamarine;
+    border: none;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+.change_state{
+    margin-top: 20px;
+    margin:20px;
+    background-color: rgba(0, 0, 0, 0.667);
+    border-radius: 5px;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+}
+.change_state h3{
+    height: 40px;
+    width: 100%;
+    background-color: aliceblue;
+    color: black;
+    margin-top: 0px;
+    display: grid;
+    place-items: center;
+}
+.change_state input{
+    height: 30px;
+    width: 60%;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: aliceblue;
+    color: black;
+    margin-bottom: 10px;
+}
+.change_state button{
+    height: 30px;
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    background-color: brown;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+#logs{
+    background-color: rgba(255, 235, 205, 0.767);
+    margin: 20px;
+    border-radius: 10px;
+}
+#logs h3{
+    height: 50px;
+    width: 100%;
+    color: black;
+    display: grid;
+    place-items: center;
+}
+#logs .w_pr_logs_search{
+    display: flex;
+    background-color: whitesmoke;
+    height: 50px;
+    color: black;
+}
+#logs .w_pr_logs_search input{
+    border: none;
+    outline: none;
+    width: 40%;
+    color: black;
+    font-size: 16px;
+}
+#logs .w_pr_logs_search p{
+    cursor: pointer;
+    width: 100px;
+    height: 100%;
+    margin-top: 0px;
+    font-size: 16px;
+    display: grid;
+    place-items: center;
+}
+.logs_search_selected{
+    background-color: rgba(0, 0, 0, 0.478);
+    color: wheat;
+}
+#logs .w_pr_logs_search button{
+    margin-left: 20px;
+    width: 80px;
+}
+#w_pr_logs_seach_res{
+    background-color: rgba(0, 0, 0, 0.67);
+    margin: 20px;
+    border-radius: 5px;
+    height: 70vh;
+    overflow: scroll;
+}
+.w_pr_logs_seach_res_card{
+    display: flex;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: rgba(240, 248, 255, 0.689);
+    border-radius: 5px;
+    height: 50px;
+}
+.w_pr_logs_seach_res_card p{
+    width: 20%;
+    height: 50px;
+    color: black;
+    padding-left: 20px;
+    
+}

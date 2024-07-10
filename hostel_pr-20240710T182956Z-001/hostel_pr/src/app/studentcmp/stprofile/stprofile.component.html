@@ -1,0 +1,118 @@
+<div id="w_pr_main_outer" *ngIf="profile.fetched">
+    <div id="w_pr_main_inner">
+        <div class="w_profile_pic">
+            <div>
+                <img [src]="profile.pic" alt="" height="100px">
+            </div>
+        </div>
+        <div class="w_pr_details">
+            <p>Name:> {{profile.name}}</p>
+            <p>ID:> {{profile.ID}}</p>
+            <p>Room number:> {{profile.rm}}</p>
+            <p>Mobile:> {{profile.mobile}}</p>
+            <p>Email ID :> {{profile.email}}</p>
+            <p>Adhar:> {{profile.adhar}}</p>
+            <p>Current state:> {{profile.current_state}}</p>
+            <p>Adress:> {{profile.adress}}</p>
+        </div>
+        <div class="w_pr_change">
+            <button (click)="change_details.status=true">Change Details</button>
+            <button (click)="chnagepass.status=true">Change password</button>
+        </div>
+        
+    </div>
+    <div id="logs">
+         <h3>Your activity</h3>
+         <div class="w_pr_logs_search">
+            <input type="text" placeholder="Search here.." #w_pr_logs_search_inp (keyup.enter)="w_pr_logs_search_btn.click()">
+            <p (click)="changelogsearchmode(1,w_pr_logs_search_inp)" [class]="logsserach.class['1']">Status</p>
+            <p (click)="changelogsearchmode(2,w_pr_logs_search_inp)" [class]="logsserach.class['2']">Date</p>
+            <p (click)="changelogsearchmode(3,w_pr_logs_search_inp)" [class]="logsserach.class['3']">Message</p>
+            <button #w_pr_logs_search_btn (click)="Seach_logs(w_pr_logs_search_inp.value)">Search</button>
+            <button (click)="reset_logs_search()">Reset</button>
+         </div>
+         <div id="w_pr_logs_seach_res">
+            <div class='w_pr_logs_seach_res_card'>
+                <p>Sl.No</p>
+                <p>Date</p>
+                <p>Time(h-m-s)</p>
+                <p>Status</p>
+                <p>Message</p>
+            </div>
+            <div class="w_pr_logs_seach_res_card" *ngFor="let item of logsserach.cur_logs;let i=index">
+                <p>{{i+1}}</p>
+                <p>{{item['time']['date']['day']}}-{{item['time']['date']['month']}}-{{item['time']['date']['year']}}</p>
+                <p>{{item['time']['time']}}</p>
+                <p>{{item['state']}}</p>
+                <p>{{item['msg']}}</p>
+            </div>
+         </div>
+    </div>
+    <div id="st_view_fee_table">
+        <h2>Fee logs</h2>
+        <div id="st_view_fee_search">
+            <input type="text" placeholder="Search here *fromat dd-mm-yyyy" #st_view_fees_search_inp (keyup.enter)="st_view_fees_search_btn.click()">
+            <p class="selected_st_view">Date</p>
+            <button (click)="search_in_st_fees(st_view_fees_search_inp.value)" #st_view_fees_search_btn>Search</button>
+            <button (click)="reset_in_st_fees()">Reset</button>
+        </div>
+        <div id="st_view_fee_res">
+            <div class="st_view_fee_res_card">
+                <p>ID</p>
+                <p>Payment ID</p>
+                <p>Date</p>
+            </div>
+            <div class="st_view_fee_res_card" *ngFor="let i of st_searchs.fees">
+                <p>{{i['id']}}</p>
+                <p>{{i['p_id']}}</p>
+                <p>{{i['date']}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<p *ngIf="!profile.fetched">unable to fetch :(</p>
+
+<div id="w_pr_change_details_outer" *ngIf="change_details.status">
+    <div id="w_pr_change_details_inner">
+        <h3 (click)="change_detailscancel()">X</h3>
+        <input type="text" placeholder="Name" value="{{profile.name}}" id="w_pr_change_details_name">
+        <input type="text" placeholder="Mobile" value="{{profile.mobile}}" id="w_pr_change_details_mobile">
+        <input type="text" placeholder="Emial" value="{{profile.email}}" id="w_pr_change_details_email">
+        <input type="text" placeholder="Adhar" value="{{profile.adhar}}" id="w_pr_change_details_adhar">
+        <button (click)="w_pr_change_details_inp.click()" id="w_pr_change_details_btn">Profile pic</button>
+        <input type="file" #w_pr_change_details_inp style="position: absolute;top: -100em;" (change)="change_details_inp($event)">
+        <p #w_pr_change_details_inp_name>{{change_details.profile_pic.name}}</p>
+        <div class="w_pr_controllers">
+            <button (click)="change_detail_send()">Change</button>
+            <button (click)="change_detailscancel()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="w_pr_change_pass_outer" *ngIf="chnagepass.status">
+    <div id="w_pr_change_pass_inner">
+        <h3 (click)="cancel_pass_change()">X</h3>
+        <button (click)="sendotp($event,reflect)">Send Otp</button>
+        <p>OTP sent to <span #reflect></span></p>
+        <p>*You have 5 miutes to change the password</p>
+        <div class="enterotp" *ngIf="chnagepass.otp">
+            <p>Enter OTP</p>
+            <div id="otp_inputs">
+                <input type="text" pattern="[0-9]">
+                <input type="text" pattern="[0-9]">
+                <input type="text" pattern="[0-9]">
+                <input type="text" pattern="[0-9]">
+                <input type="text" pattern="[0-9]">
+                <input type="text" pattern="[0-9]">
+            </div>
+            <button (click)="submitotp(reflect)">Submit</button>
+            <p>Resend otp in {{chnagepass.resend}}</p>
+        </div>
+        <div class="newpass" *ngIf="chnagepass.change">
+            <input type="text" placeholder="Enter your new password" #change_pass_inp1>
+            <input type="text" placeholder="Re-enter your password" #change_pass_inp2>
+            <button (click)="changepass_final(change_pass_inp1.value,change_pass_inp2.value,$event,reflect)">Change</button>
+        </div>
+    </div>
+</div>
+

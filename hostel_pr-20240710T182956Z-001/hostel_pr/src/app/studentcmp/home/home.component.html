@@ -1,0 +1,58 @@
+
+<div id="warden_welcome_msg">
+    <p>Welcome </p>
+    <p>Hope you are doing well today :)</p>
+</div>
+<div class="curreststength">
+    <h3 style="color: black;">Hostel strength</h3>
+    <div id="warden_stregth_outer">
+        <div id="warden_stregth_inner">
+            <p></p>
+        </div>
+    </div>
+    <div id="curreststength_stats">
+        <p>Current Strength:>{{strength.str}}</p>
+        <p>Total Strength:> {{strength.total}}</p>
+    </div>
+    <p *ngIf="!strength.fetched">Unable to Fetch :(</p>
+</div>
+
+<div class="warden_applications_meta_home">
+    <h3>Applications</h3>
+    <p>Total Applications recieved till now:> {{applications.total}}</p>
+    <p>Month wise data, this year</p>
+    <div id="warden_app_table">
+        <div class="warden_app_table_card">
+            <p>Month</p>
+            <p>Applications</p>
+        </div>
+        <div *ngFor="let item of applications.counts" class="warden_app_table_card">
+            <p>{{item.month}}</p>
+            <p>{{item.count}}</p>
+        </div>
+    </div>
+    <p *ngIf="!applications.fetched">Unable to fetch :(</p>
+</div>
+
+<div class="warden_insideview">
+    <h3>Persons active in hostel</h3>
+    <p>Students:> {{inside_view.st}}</p>
+    <p>Employees:> {{inside_view.emp}}</p>
+    <p *ngIf="!inside_view.fetched">Unable to fetch :(</p>
+    <div>
+        <p>Check employee status</p>
+        <input type="text" placeholder="Name or Mobile number" #name (input)="Show_suggesion(name)">
+    </div>
+</div>
+
+
+<div id="showsuggestions" *ngIf="sug.status">
+    <h3 (click)="sug.status=false">X</h3>
+    <div *ngFor="let i of sug.res" class="showsuggestions_card">
+        <div (click)="final_indi(i)">
+            <p>{{i['mobile_no']}}</p>
+            <p>{{i['name']}}</p>
+            <p>{{i['status']}}</p>
+        </div>
+    </div>
+</div>

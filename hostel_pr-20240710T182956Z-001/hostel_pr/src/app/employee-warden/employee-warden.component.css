@@ -1,0 +1,218 @@
+#warden{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0px;
+    left: 0px;
+    display: flex;
+}
+#warden_navbar{
+    height: 100vh;
+    width: 15vw;
+    background-color: cadetblue;
+}
+#warden_navbar div:nth-child(1){
+    height: 50px;
+    background-color: rgba(222, 184, 135, 0.505);
+    display: flex;
+    align-items: center;
+    color: rgb(211, 32, 0);
+    font-size: 18px;
+}
+#warden_navbar p{
+    height: 40px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    /* background-color: rgba(222, 184, 135, 0.505); */
+    margin-top: 10px;
+    cursor: pointer;
+}
+#warden_navbar div img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+#warden_navbar div span{
+    margin-left: 35px;
+    cursor: pointer;
+}
+.warden_navbar_selected{
+    background-color: rgba(240, 248, 255, 0.53);
+}
+#warden_content{
+    height: 100vh;
+    width: 85vw;
+    overflow: scroll;
+    background-color: black;
+    color: white;
+    animation: pageanimate 1s alternate;
+}
+app-wardenhome{
+    animation: pageanimate alternate 1s;
+}
+@keyframes pageanimate {
+    0%{
+        width:0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+#warden_content::-webkit-scrollbar{
+    display: none;
+}
+
+#messages{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    cursor: pointer;
+     height: 40px;
+    width: 100%;
+    background-color: transparent;
+}
+
+
+#feedback{
+    position: fixed;
+    right: 30px;
+    bottom: 50px;
+    background-color: cadetblue;
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    color: black;
+    font-size: 17px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 999;
+    user-select: none;
+}
+#feedback_outer{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(240, 248, 255, 0.593);
+    top: 0px;
+    left: 0px;
+    backdrop-filter: blur(5px);
+    display: grid;
+    place-items: center;
+}
+#feedback_inner{
+    height: 90vh;
+    width: 60vw;
+    border-radius: 10px;
+    background-color: cadetblue;
+    transform-origin: bottom;
+    animation:feedback 1s ease-in-out alternate ;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes feedback {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+#feedback_inner h3{
+    margin-top: 0px;
+    margin-left: 0px;
+    height: 40px;
+    width: 50px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgba(165, 42, 42, 0.689);
+    display: grid;
+    place-items: center;
+}
+#feedback_inner p{
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+#feedback_inner textarea{
+    height: 70px;
+    width: 80%;
+    border-radius: 5px;
+    margin-left: 30px;
+    margin-top: 5px;
+    font-size: 16px;
+}
+#feedback_inner button{
+    height: 40px;
+    width: 100px;
+    margin-left: 20px;
+    margin-top: 10px;
+    background-color: rgba(40, 125, 29, 0.855);
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+#container{
+    height: 500px;
+    width: 96%;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0);
+    overflow: scroll;
+    color: whitesmoke;
+}
+.feedbacks_card{
+    width: 100%;
+}
+.date_show{
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+.date_show p{
+    background-color: grey;
+    display: grid;
+    place-items: center;
+    color: black;
+    border-radius: 2px;
+}
+.ac_card{
+    margin: 10px;
+    border-radius: 5px;
+    background-color: gray;
+    min-width: 100px;
+    width: max-content;
+    display: flex;
+    padding: 0px;
+    flex-direction: column;
+}
+#feedback_inner .from_c{
+    height: 15px;
+    font-size: 14px;
+    margin-left: 0px;
+    color: brown;
+    margin-top: 5px;
+    align-self: flex-start;
+}
+#feedback_inner .msg_c{
+    margin: 0;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+#feedback_inner .time_c{
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 5px;
+    margin-bottom: 0px;
+    height: 15px;
+    font-size: 12px;
+    align-self: flex-end;
+}

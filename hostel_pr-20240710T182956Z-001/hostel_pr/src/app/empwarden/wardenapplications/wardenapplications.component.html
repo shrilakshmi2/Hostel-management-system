@@ -1,0 +1,89 @@
+<div id="metadata">
+<p>Total applications till now:> {{metadata.total}}</p>
+<p>Accepted:> {{metadata.acc}}</p>
+<p>Rejected:> {{metadata.rej}}</p>
+<p>Pending:> {{metadata.pending}}</p>
+</div>
+
+<div id="appli_table">
+    <h3>Applications</h3>
+    <div id="app_table_search">
+        <p (click)="change_search_type('1')" [class]="metasearch.typeclass['1']">Pending</p>
+        <p (click)="change_search_type('2')" [class]="metasearch.typeclass['2']">Accepted</p>
+        <p (click)="change_search_type('3')" [class]="metasearch.typeclass['3']">Rejected</p>
+        <input type="text" placeholder="Search here..." #app_table_search_inp (keyup.enter)="app_table_search_btn.click()">
+        <p (click)="change_search_mode('1')" [class]="metasearch.class['1']">ID</p>
+        <p (click)="change_search_mode('2')" [class]="metasearch.class['2']">Name</p>
+        <button #app_table_search_btn (click)="serach_meta(app_table_search_inp.value)">Search</button>
+        <button (click)="search_meta_reset()">Reset</button>
+    </div>
+    <div id="app_table_res">
+        <div class="app_table_res_card">
+            <p>Application ID</p>
+            <p>Name</p>
+            <p>Mobile</p>
+            <p>Status</p>
+            <div>
+                <p>actions</p>
+            </div>
+        </div>
+        <div class="app_table_res_card" *ngFor="let item of metasearch.res">
+            <p>{{item['app_id']}}</p>
+            <p>{{item['name']}}</p>
+            <p>{{item['mobile']}}</p>
+            <p>{{item['others']['status']}}</p>
+            <div>
+                <button (click)="view_app(item)">View</button>
+                <button (click)="accept_aplication(item['app_id'])">Accept</button>
+                <button (click)="reject_aplication(item['app_id'])">Reject</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- abs -->
+<div id="st_view_outer" *ngIf="view.status">
+    <div id="st_view_inner">
+        <h3 (click)="cancel_app_view()">X</h3>
+        <div id="st_view_profile">
+            <div id="app_view_pics">
+                <p>Profie pic</p>
+                <div id="st_view_profile_pic">
+                    <div (click)="view_pr_pic(view.data['profile_pic'],1,$event)">
+                        <img [src]="view.data['profile_pic']" alt="Profile_pic">
+                    </div>
+                </div>
+                <p>Aadhar pic</p>
+                <div id="view_app_adhar">
+                    <div (click)="view_pr_pic(view.data['adhar']['pic'],2,$event)">
+                        <img [src]="view.data['adhar']['pic']" alt="adhar">
+                    </div>
+                </div>
+            </div>
+            <div id="app_view_profile_details">
+                <p>Name:> {{view.data['name']}}</p>
+                <p>ID:> {{view.data['collage']['usn']}}</p>
+                <p>college name:> {{view.data['collage']['clg']}}</p>
+                <p>Application ID:> {{view.data['app_id']}}</p>
+                <p>Mobile:> {{view.data['mobile']}}</p>
+                <p>Email:> {{view.data['email']}}</p>
+                <p>Applied on(dd-mm-yyyy):> {{view.data['datetime']}}</p>
+                <p>Status:> {{view.data['others']['status']}}</p>
+                <p>Adhar:> {{view.data['adhar']['no']}}</p>
+                <p>Address:> {{view.data['adress']['cl']}},{{view.data['adress']['country']}},{{view.data['adress']['state']}},{{view.data['adress']['dis']}},{{view.data['adress']['pin']}}</p>
+                <p>Gaurdian:> {{view.data['gname']}}</p>
+                <div>
+                    <button (click)="accept_aplication(view.data['app_id'])">Accept</button>
+                    <button (click)="reject_aplication(view.data['app_id'])">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="view_pic_outer" *ngIf="view_pic.status">
+    <div id="view_pic_inner"  [style]="view_pic.style">
+        <h3 (click)="cancel_pic_view()">X</h3>
+        <img [src]="view_pic.src" alt="">
+    </div>
+</div>

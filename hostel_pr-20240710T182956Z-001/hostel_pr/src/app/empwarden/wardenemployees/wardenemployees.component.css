@@ -1,0 +1,613 @@
+#employees_meta{
+    margin: 20px;
+    background-color: rgba(255, 235, 205, 0.767);
+    border-radius: 10px;
+    height: 200px;
+    width: 40vw;
+    color: black;
+}
+#employees_meta p{
+    margin-top: 10px;
+    margin-left: 20px;
+    height: 30px;
+    font-size: 16px;
+}
+#employees_meta button{
+    margin-left: 20px;
+    border: none;
+    background-color: aquamarine;
+    font-size: 15px;
+    border-radius: 5px;
+    height: 30px;
+    width: 150px;
+}
+#emp_table{
+    margin: 20px;
+    background-color: rgba(255, 235, 205, 0.767);
+    border-radius: 10px;
+}
+#emp_table h3{
+    color: black;
+    margin: 20px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+}
+#emp_table_search{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(240, 248, 255, 0.837);
+}
+#emp_table_search input{
+    border: none;
+    outline: none;
+    width: 40%;
+    font-size: 16px;
+}
+#emp_table_search p{
+    width: 80px;
+    height: 100%;
+    margin-top: 0px;
+    display: grid;
+    place-items: center;
+    color: black;
+    font-size: 16px;
+}
+
+#emp_table_search button{
+    margin-left: 20px;
+    margin-top: 0px;
+    border-radius: 5px;
+    width: 100px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.59);
+    font-size: 15px;
+}
+.selected_meta_search{
+    background-color: rgba(0, 0, 0, 0.563);
+    color: beige;
+}
+#emp_tableres{
+    margin-left: 20px;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.614);
+    border-radius: 5px;
+    height: 100vh;
+    width: 90%;
+    overflow: scroll;
+    margin-bottom: 20px;
+}
+#emp_tableres .emp_table_res_card{
+    display: flex;
+    height: 150px;
+    width: 98%;
+    background-color: rgba(240, 248, 255, 0.634);
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: black;
+    align-items: center;
+}
+#emp_tableres .emp_table_res_card p{
+    margin-left: 10px;
+    width: 20%;
+    font-size: 17px
+}
+#emp_tableres .emp_table_res_card:nth-child(1){
+    height: 50px;
+}
+#emp_tableres .emp_table_res_card div{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+#emp_tableres .emp_table_res_card div button{
+    width: 80px;
+    height: 40px;
+    border: none;
+    background-color: aquamarine;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+/*  */
+#confirmation_outer{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(240, 248, 255, 0.662);
+    display: grid;
+    place-items: center;
+    backdrop-filter: blur(5px);
+}
+#confirmation_inner{
+    background-color: rgba(0, 0, 0, 0.682);
+    border-radius: 10px;
+    width: 30vw;
+}
+#confirmation_inner p{
+    margin-left: 30px;
+    margin-top: 20px;
+    font-size: 17px;
+}
+#confirmation_inner button{
+    background-color: aquamarine;
+    border: none;
+    border-radius: 5px;
+    margin-left: 30px;
+    height: 30px;
+    margin-bottom: 30px;
+}
+#confirmation_inner button:nth-child(1){
+    background-color: brown;
+    color: white;
+}
+/*  */
+
+#add_emp_w_outer{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.49);
+    display: grid;
+    place-items: center;
+    overflow: scroll;
+    backdrop-filter: blur(5px);
+}
+#add_emp_w_inner{
+    width: 60vw;
+    background-color: rgba(255, 255, 255, 0.941);
+    border-radius: 10px;
+    margin: 20px;
+}
+#add_emp_w_inner h3{
+    width: 40px;
+    height: 30px;
+    background-color: brown;
+    display: grid;
+    margin-top: 0px;
+    place-items: center;
+    color: black;
+}
+#add_emp_w_inner h2,#add_emp_w_inner h4,#add_emp_w_inner h2{
+    margin-top: 0px;
+    height: 30px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    color: black;
+}
+#add_emp_w_inner #add_emp_details{
+    width: 50vw;
+    background-color: rgba(100, 148, 237, 0.808);
+    margin: 20px;
+    border-radius: 10px;
+}
+#add_emp_w_inner #add_emp_details input{
+    height: 30px;
+    width: 80%;
+    background-color: black;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 10px;
+}
+#add_emp_w_inner #emp_addinp_address{
+    width: 50vw;
+    background-color: rgba(100, 148, 237, 0.808);
+    margin: 20px;
+    border-radius: 10px;
+}
+
+#add_emp_w_inner #emp_addinp_address input{
+    height: 30px;
+    width: 80%;
+    background-color: black;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 10px;
+}
+#add_emp_w_inner #emp_addinp_profile{
+    width: 20vw;
+    background-color: rgba(100, 148, 237, 0.808);
+    margin: 20px;
+    border-radius: 10px;
+}
+#add_emp_w_inner #emp_addinp_profile p{
+    margin-left: 10px;
+    color: black;
+    height: 30px;
+}
+#add_emp_w_inner #emp_addinp_profile button{
+    margin: 20px;
+    background-color: rgba(127, 255, 212, 0.748);
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 100px;
+}
+#add_emp_w_inner #fee_status{
+    width: 40vw;
+    background-color: rgba(100, 148, 237, 0.808);
+    margin: 20px;
+    border-radius: 10px;
+}
+#add_emp_w_inner #fee_status input{
+    height: 30px;
+    width: 80%;
+    background-color: black;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 10px;
+}
+#add_emp_w_inner button{
+    background-color: rgba(100, 148, 237, 0.808);
+    margin: 20px;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 100px;
+}
+#emp_addinp_des{
+    background-color: rgba(100, 148, 237, 0.808);
+    margin: 20px;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    
+}
+#emp_addinp_des input{
+    height: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+#emp_addinp_des label{
+    cursor: pointer;
+}
+#emp_addinp_des div{
+    display: flex;
+    align-items: center;
+}
+
+#st_view_outer{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(240, 248, 255, 0.621);
+    display: grid;
+    place-items: center;
+    overflow:scroll;
+    backdrop-filter: blur(5px);
+}
+#st_view_inner{
+    width: 60vw;
+    margin-top: 20px;
+    background-color: rgba(255, 235, 205, 0.767);
+    border-radius: 10px;
+}
+#st_view_inner h3:nth-child(1){
+    margin-top: 0px;
+    background-color: rgba(165, 42, 42, 0.641);
+    height: 40px;
+    width: 50px;
+    display: grid;
+    place-items: center;
+}
+#st_view_inner h3:nth-child(1):hover{
+    background-color: brown;
+}
+#st_view_profile{
+    display: flex;
+    background-color: rgba(128, 156, 181, 0.648);
+    margin: 20px;
+    width: 70%;
+    color: black;
+    border-radius: 10px;
+}
+#st_view_profile #st_view_profile_pic{
+    height: 100%;
+    width: 150px;
+    margin: 20px;
+}
+#st_view_profile #st_view_profile_pic div{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: black;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+#st_view_profile #st_view_profile_pic div img{
+    height: 120px;
+}
+#st_view_profile #st_view_profile_details{
+    margin-left: 50px;
+}
+#st_view_profile #st_view_profile_details p{
+    height: 30px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+#st_view_log_table{
+    background-color: rgba(128, 156, 181, 0.648);
+    margin: 20px;
+    border-radius: 10px;
+}
+#st_view_log_table h2{
+    color: black;
+    height: 40px;
+    width: 100%;
+    display: grid;place-items: center;
+}
+#st_view_log_table #st_view_logs_search{
+    display: flex;
+    height: 50px;
+    width: 90%;
+    margin-left: 20px;
+    background-color: rgba(240, 248, 255, 0.711);
+}
+#st_view_log_table #st_view_logs_search input{
+    margin-top: 0px;
+    border: none;
+    outline: none;
+    width: 60%;
+    font-size: 16px;
+}
+#st_view_log_table #st_view_logs_search p{
+    width: 100px;
+    height: 100%;
+    margin-top: 0px;
+    display: grid;
+    place-items: center;
+    font-size: 17px;
+    color: black;
+}
+#st_view_log_table #st_view_logs_search button{
+    height: 100%;
+    width: 100px;
+    margin-left: 20px;
+}
+#st_view_log_table #st_view_logs_res{
+    background-color: rgba(0, 0, 0, 0.615);
+    height: 50vh;
+    overflow: scroll;
+    margin: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#st_view_logs_res .st_view_logs_res_card{
+    display: flex;
+    place-items: center;
+    font-size: 17px;
+    background-color: white;
+    width: 96%;
+    height: 50px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: black;
+}
+#st_view_logs_res .st_view_logs_res_card p{
+    width: 25%;
+    margin-left: 20px;
+    overflow: scroll;
+}
+#st_view_logs_res .st_view_logs_res_card p::-webkit-scrollbar{
+    display: none;
+}
+#st_view_fee_table{
+    margin: 20px;
+    background-color: rgba(128, 156, 181, 0.648);
+    border-radius: 10px;
+}
+#st_view_fee_table h2{
+    color: black;
+    height: 40px;
+    width: 100%;
+    display: grid;place-items: center;
+}
+#st_view_fee_table #st_view_fee_search{
+    display: flex;
+    height: 50px;
+    width: 90%;
+    margin-left: 20px;
+    background-color: rgba(240, 248, 255, 0.711);
+}
+#st_view_fee_table #st_view_fee_search input{
+    margin-top: 0px;
+    border: none;
+    outline: none;
+    width: 60%;
+    font-size: 16px;
+}
+#st_view_fee_table #st_view_fee_search p{
+    width: 100px;
+    height: 100%;
+    margin-top: 0px;
+    display: grid;
+    place-items: center;
+    font-size: 17px;
+    color: black;
+}
+#st_view_fee_table #st_view_fee_search button{
+    height: 100%;
+    width: 100px;
+    margin-left: 20px;
+}
+#st_view_fee_res{
+    background-color: rgba(0, 0, 0, 0.615);
+    height: 50vh;
+    overflow: scroll;
+    margin: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#st_view_fee_res .st_view_fee_res_card{
+    display: flex;
+    place-items: center;
+    font-size: 17px;
+    background-color: white;
+    width: 96%;
+    height: 50px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: black;
+}
+#st_view_fee_res .st_view_fee_res_card p{
+    width: 33%;
+    margin-left: 20px;
+    overflow: scroll;
+}
+#st_view_fee_res .st_view_fee_res_card p::-webkit-scrollbar{
+    display: none;
+}
+
+#mailsending_outer{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.705);
+    display: grid;
+    place-items: center;
+    top: 0px;
+    left: 0px;
+    backdrop-filter: blur(5px);
+}
+#mailsending_inner{
+    background-color: rgb(128, 156, 181);
+    border-radius: 10px;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+}
+#mailsending_inner P{
+    margin-left: 30px;
+    margin-top: 20px;
+    height: 30px;
+    font-size: 16px;
+}
+#mailsending_inner textarea{
+    border-radius: 5px;
+    margin-left: 30px;
+    margin-top: 10px;
+    resize: none;
+    width: 35vw;
+    font-size: 15px;
+}
+#mailsending_inner button{
+    border: none;
+    background-color: aquamarine;
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+#mailsending_inner button:nth-child(2){
+    background-color: brown;
+}
+#update_sal_outer{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.705);
+    display: grid;
+    place-items: center;
+    top: 0px;
+    left: 0px;
+    backdrop-filter: blur(5px);
+}
+#update_sal_inner{
+    background-color: rgb(128, 156, 181);
+    border-radius: 10px;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+#update_sal_inner h2{
+    height: 30px;
+    width: 40px;
+    background-color: brown;
+    margin-top: 0px;
+    margin-left: 0px;
+    display: grid;
+    place-items: center;
+}
+#update_sal_inner h3{
+    height: 30px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+#update_sal_inner input{
+    height: 30px;
+    width: 80%;
+    margin-top: 10px;
+    margin-left: 20px;
+    color: black;
+    border-radius: 5px;
+}
+#update_sal_inner button{
+    margin-left: 20px;
+    background-color: aquamarine;
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#update_sal_suggesion{
+    position: absolute;
+    background-color: aliceblue;
+    height: 250px;
+    width: 70vw;
+    border-radius: 10px;
+    overflow: scroll;
+}
+#update_sal_suggesion h3{
+    height: 30px;
+    width: 40px;
+    background-color: brown;
+    margin-top: 0px;
+    margin-left: 0px;
+    display: grid;
+    place-items: center;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+}
+.update_sal_suggesion_card div{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.785);
+    width: 96%;
+    margin: 10px;
+    border-radius: 5px;
+    align-items: center;
+}
+.update_sal_suggesion_card div p{
+    width: 25%;
+}

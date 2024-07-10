@@ -1,0 +1,18 @@
+<div id="warden">
+    <div id="warden_navbar">
+        <div>
+            <img [src]="emp_pr" alt="">
+            <span (click)="logout()">Log out</span>
+        </div>
+        <p (click)="loadresources('1',$event)" [class]="mode['1']">Home</p>
+        <p (click)="loadresources('2',$event)" [class]="mode['2']">Profile</p>
+        <div id="messages"><p (click)="loadresources('7',$event)" [class]="mode['7']">Messages</p>
+            <p *ngIf="msg_count!=0">{{msg_count}}</p>
+        </div>
+    </div>
+    <div id="warden_content">
+        <app-wardenhome *ngIf="mode.mode=='1'" [obj]="{id:emp_id,unq:unq}"></app-wardenhome>
+        <app-wardenprofile *ngIf="mode.mode=='2'" [obj]="{id:emp_id,unq:unq}"></app-wardenprofile>
+        <app-wardenmsgs *ngIf="mode.mode=='7'" [obj]="{id:emp_id,unq:unq,mode:'emp'}" (viewd)="Viewd($event)"></app-wardenmsgs>
+    </div> 
+</div>

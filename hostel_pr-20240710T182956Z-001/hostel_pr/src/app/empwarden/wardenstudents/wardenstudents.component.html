@@ -1,0 +1,219 @@
+<div id="w_st_meta">
+    <p>Total students:> {{metadata.total}}</p>
+    <p>Studnets logged in:> {{metadata.in}}</p>
+    <p>Studnets logged out:> {{metadata.out}}</p>
+    <div id="w-st-contollers">
+        <button (click)="addstudent.status=true">Add New</button>
+    </div>
+</div>
+<div id="w_st_table">
+    <h3>Students information</h3>
+    <div id="w_st_tablesearch">
+        <input type="text" placeholder="Search here" #w_st_search_inp (keyup.enter)="w_st_search_btn.click()">
+        <p (click)="w_st_search_changemode('2')" [class]="meta_search.class['2']">Name</p>
+        <p (click)="w_st_search_changemode('1')" [class]="meta_search.class['1']">Id</p>
+        <button #w_st_search_btn (click)="w_st_search(w_st_search_inp.value)">Search</button>
+        <button (click)="w_st_search_reset()">Reset</button>
+    </div>
+    <div id="w_st_table_res">
+        <div class="w_st_table_res">
+            <p>SL.NO</p>
+            <p>ID</p>
+            <p>Name(Room.No)</p>
+            <p>Fee Status</p>
+            <p>Due</p>
+            <div>Actions</div>
+        </div>
+        <div class="w_st_table_res" *ngFor="let item of meta_search.logs;let i=index">
+            <p>{{i+1}}</p>
+            <p>{{item['USN']}}</p>
+            <p>{{item['Name']}}({{item['Room_no']}})</p>
+            <p>{{item['fee_status']}}</p>
+            <p>{{item['latest_fee']['due_on']}}</p>
+            <div>
+                <button (click)="student_view(item)">View</button>
+                <button (click)="remove_student(item['USN'],item['Name'])">Remove</button>
+                <button (click)="change_room_fn(item)">Change room</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- abs -->
+<div *ngIf="addstudent.status" id="add_students_outer">
+    <div #add_stu id="add_students_inner">
+            <h3 (click)="cancel_add_st()">X</h3>
+            <h2>Fill this form</h2>
+            <div id="st_w_add_details">
+                <h4>Primary details</h4>
+                <input type="text" placeholder="Collage ID">
+                <input type="text" placeholder="*Name of Student" id="emp_addinp_name" #emp_addinp_name>
+                <input type="text" placeholder="*Gaurdian name of Student" id="emp_addinp_gname" #emp_addinp_gname>
+                <input type="text" placeholder="Gaurdian type" >
+                <input type="number" placeholder="*Phone number" id="emp_addinp_phone" #emp_addinp_phone>
+                <input type="text" placeholder="*Email" id="emp_addinp_email" #emp_addinp_email>
+                <input type="number" placeholder="*Adhar number" id="emp_addinp_adhar" #emp_addinp_adhar>
+            </div>
+            <div id="emp_addinp_address">
+                <h4>*Address</h4>
+                <input type="text" placeholder="Current living" id="emp_addinp_address_main" #emp_addinp_address_main>
+                <input type="text" placeholder="Country" id="emp_addinp_address_country" #emp_addinp_address_country>
+                <input type="text" placeholder="State" id="emp_addinp_address_state" #emp_addinp_address_state>
+                <input type="text" placeholder="District" id="emp_addinp_address_dis" #emp_addinp_address_dis>
+                <input type="text" id="emp_addinp_address_pin" placeholder="PIN" #emp_addinp_address_pin>
+            </div>
+            <div id="emp_addinp_profile">
+                <h4>Profile picture</h4>
+                <p>*Leave blank if you dont have</p>
+                <button (click)="emp_addinp_profile_input.click()">Upload</button>
+                <input type="file" style="position: absolute;top: -100em;" id="emp_addinp_profile_input" #emp_addinp_profile_input (change)="addprofile_studnet_add($event)">
+                <p #add_st_img>{{addstudent.profile.name}}</p>
+            </div>
+            <div id="fee_status">
+                <h4>Fee status</h4>
+                <input type="text" placeholder="Payment ID">
+            </div>
+            <button (click)="addstudent_final(add_stu,$event)">Add Student</button>
+    </div>
+</div>
+
+
+
+
+<div id="st_view_outer" *ngIf="st_view.status">
+    <div id="st_view_inner">
+        <h3 (click)="cancel_st_view()">X</h3>
+        <div id="st_view_profile">
+            <div id="st_view_profile_pic">
+                <div>
+                    <img [src]="st_view.data['Profile_pic']" alt="Profile_pic">
+                </div>
+            </div>
+            <div id="st_view_profile_details">
+                <p>Name:> {{st_view.data['Name']}}</p>
+                <p>ID:> {{st_view.data['USN']}}</p>
+                <p>Mobile:> {{st_view.data['Mobile']}}</p>
+                <p>Email:> {{st_view.data['E_mail']}}</p>
+                <p>Status:> {{st_view.data['Status']}}</p>
+                <p>Fee Status:> {{st_view.data['fee_status']}}</p>
+                <p>Adhar:> {{st_view.data['Aadhar_number']}}</p>
+                <p>Due:> {{st_view.data['latest_fee']['due_on']}}</p>
+                <p>Address:> {{st_view.data['Address']['cl']}},{{st_view.data['Address']['country']}},{{st_view.data['Address']['state']}},{{st_view.data['Address']['dist']}},{{st_view.data['Address']['pin']}}</p>
+                <p>Gaurdian:> {{st_view.data['Guardian_name']}}({{st_view.data['Guardian']}})</p>
+                <button (click)="fee_update=true">Update Fee Payment</button>
+            </div>
+        </div>
+
+
+        <div id="st_view_log_table">
+            <h2>Logs</h2>
+            <div id="st_view_logs_search">
+                <input type="text" placeholder="Search here" #st_view_logs_search_inp (keyup.enter)="st_view_logs_search_btn.click()">
+                <p (click)="change_searchmode_st_logs('1',st_view_logs_search_inp)" [class]="st_searchs.log_class['1']">Status</p>
+                <p (click)="change_searchmode_st_logs('2',st_view_logs_search_inp)" [class]="st_searchs.log_class['2']">Date</p>
+                <button (click)="search_in_st_logs(st_view_logs_search_inp.value)" #st_view_logs_search_btn>Search</button>
+                <button (click)="reset_search_st_logs()">Reset</button>
+            </div>
+            <div id="st_view_logs_res">
+                <div class="st_view_logs_res_card">
+                    <p>ID</p>
+                    <p>In/out</p>
+                    <p>Message</p>
+                    <p>Date</p>
+                </div>
+                <div class="st_view_logs_res_card" *ngFor="let i of st_searchs.logs">
+                    <p>{{i['id']}}</p>
+                    <p>{{i['state']}}</p>
+                    <p>{{i['msg']}}</p>
+                    <p>{{i['date']}}</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="st_view_fee_table">
+            <h2>Fee logs</h2>
+            <div id="st_view_fee_search">
+                <input type="text" placeholder="Search here *fromat dd-mm-yyyy" #st_view_fees_search_inp (keyup.enter)="st_view_fees_search_btn.click()">
+                <p class="selected_st_view">Date</p>
+                <button (click)="search_in_st_fees(st_view_fees_search_inp.value)" #st_view_fees_search_btn>Search</button>
+                <button (click)="reset_in_st_fees()">Reset</button>
+            </div>
+            <div id="st_view_fee_res">
+                <div class="st_view_fee_res_card">
+                    <p>ID</p>
+                    <p>Payment ID</p>
+                    <p>Date</p>
+                </div>
+                <div class="st_view_fee_res_card" *ngFor="let i of st_searchs.fees">
+                    <p>{{i['id']}}</p>
+                    <p>{{i['p_id']}}</p>
+                    <p>{{i['date']}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="confirmation_outer" *ngIf="rm_student.status">
+    <div id="confirmation_inner">
+        <p>Removing student {{rm_student.usn}}({{rm_student.name}})</p>
+        <p>Are you sure?</p>
+        <div>
+            <button (click)="remove_student_final()">Remove</button>
+            <button (click)="cnacel_rm_student()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="changeroom_outer" *ngIf="change_room.status">
+    <div id="changeroom_inner">
+        <h3 (click)="Change_room_cancel()">X</h3>
+        <h2>Room changes</h2>
+        <div class="ch_rm_modes">
+            <p (click)="change_room_mode('1')" [class]="change_room.class.ch">Change</p>
+            <p (click)="change_room_mode('2')" [class]="change_room.class.swp">Swap</p>
+        </div>
+        <div class="inputs_ch" *ngIf="change_room.mode=='ch'">
+            <input type="text" placeholder="Id of student" value="{{change_room.usn}}">
+            <input type="text" placeholder="Name of student" value="{{change_room.name}}">
+            <input type="text" placeholder="Room no to change" #room_no>
+            <p style="color: black;">*Leave balnk for auto allocation</p>
+            <button (click)="change_room_finale(room_no.value)">change</button>
+        </div>
+        <div class="inputs_ch" *ngIf="change_room.mode=='swp'">
+            <input type="text" placeholder="Id of student" value="{{change_room.usn}}">
+            <input type="text" placeholder="Name of student" value="{{change_room.name}}">
+            <input type="text" placeholder="ID of student to swap" (input)="swap_input_done($event)" [value]="change_room.swap_with.usn">
+            <input type="text" placeholder="name of student to swap" [value]="change_room.swap_with.name">
+            <button (click)="swap_room_final()">Swap</button>
+        </div>
+    </div>
+</div>
+
+<div id="change_room_swp_res" *ngIf="change_room.seachres.status">
+    <div id="h3">
+        <h4 (click)="change_room.seachres.status=false">X</h4>
+    </div>
+    <div class="change_room_swp_res_card" *ngFor="let item of change_room.seachres.res"  >
+        <div (click)="update_swap_with(item)">
+            <p>{{item['USN']}}</p>
+            <p>{{item['Name']}}</p>
+            <p>{{item['Room_no']}}</p>
+        </div>
+    </div>
+</div>
+
+<div id="fee_update" *ngIf="fee_update">
+    <div id="fee_update_inner">
+        <h3 (click)="fee_update=false">X</h3>
+        <p>{{st_view.data['Name']}}</p>
+        <p #id_f_u>{{st_view.data['USN']}}</p>
+        <p>Enter payment ID</p>
+        <input type="text" #p_id_f>
+        <button (click)="update_fee_st(id_f_u.innerHTML,p_id_f.value)">Update</button>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div id="login" *ngIf="!loged_in">
+    <input type="text" placeholder='Username' #first id="first_crd" (keyup.enter)="second.focus()">
+    <input type="password" placeholder="Password" #second id="second_crd" (keyup.enter)='submit_btn.click()'>
+    <button (click)="submit(first,second,msg)" #submit_btn>Login</button>
+    <p id="msg" #msg></p>
+</div>
+<div *ngIf="loged_in">
+    <div id="warden">
+        <div id="warden_navbar">
+            <div>
+                <img [src]="emp_pr" alt="">
+                <span (click)="logout()">Log out</span>
+            </div>
+            <p (click)="loadresources('1',$event)" [class]="mode['1']">Home</p>
+            <p (click)="loadresources('3',$event)" [class]="mode['3']">Rooms and status</p>
+            <p (click)="loadresources('4',$event)" [class]="mode['4']">Students</p>
+            <p (click)="loadresources('5',$event)" [class]="mode['5']">Employees</p>
+            <p (click)="loadresources('6',$event)" [class]="mode['6']">applications</p>
+            <div id="messages"><p (click)="loadresources('7',$event)" [class]="mode['7']">Messages</p>
+                <p *ngIf="msg_count!=0">{{msg_count}}</p>
+            </div>
+        </div>
+        <div id="warden_content">
+            <app-wardenhome *ngIf="mode.mode=='1'" [obj]="{id:emp_id,unq:unq}"></app-wardenhome>
+            <app-wardenroomst *ngIf="mode.mode=='3'" [obj]="{id:emp_id,unq:unq}"></app-wardenroomst>
+            <app-wardenstudents *ngIf="mode.mode=='4'" [obj]="{id:emp_id,unq:unq}"></app-wardenstudents>
+            <app-wardenemployees *ngIf="mode.mode=='5'" [obj]="{id:emp_id,unq:unq}"></app-wardenemployees>
+            <app-wardenapplications *ngIf="mode.mode=='6'" [obj]="{id:emp_id,unq:unq}"></app-wardenapplications>
+            <app-wardenmsgs *ngIf="mode.mode=='7'" [obj]="{id:emp_id,unq:unq,mode:'m'}" (viewd)="Viewd($event)"></app-wardenmsgs>
+        </div> 
+    </div>
+</div>

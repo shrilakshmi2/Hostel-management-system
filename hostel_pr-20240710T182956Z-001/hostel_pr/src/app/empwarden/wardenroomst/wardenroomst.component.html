@@ -1,0 +1,58 @@
+<div id="wr_roomst_status">
+    <div class="details">
+        <h3>Room Stats</h3>
+        <p>Total rooms:> {{rooms_table.total}}</p>
+        <p>Available rooms:> {{rooms_table.avail}}</p>
+    </div>
+    <div class="layout">
+        <p>Bed</p>
+        <p>Bed</p>
+        <p>Bed</p>
+        <p>Door</p>
+        <p>Toilet</p>
+    </div>
+</div>
+<div class="w_rst_table">
+    <h3>Rooms And Status</h3>
+    <div id="w_rst_search">
+        <input type="text" placeholder="search here" #w_res_search_inp (keyup.enter)="w_rst_search_btn.click()">
+        <p (click)="chnage_search_mode('1')" [class]="search.class['1']">R.NO</p>
+        <p (click)="chnage_search_mode('2')" [class]="search.class['2']">Students</p>
+        <p (click)="chnage_search_mode('3')" [class]="search.class['3']">Status</p>
+        <button #w_rst_search_btn (click)="search_inrooms(w_res_search_inp.value)">search</button>
+        <button (click)="reset_search()">Reset</button>
+    </div>
+    <div id="w_rst_cur_table">
+        <div class="w_rst_card" >
+            <p>Room No</p>
+            <p>Status</p>
+            <div>
+                <p>Students</p>
+            </div>
+            <div>Actions</div>
+        </div>
+        <div class="w_rst_card" *ngFor="let item of search.cur_logs">
+            <p>{{item.room_no}}</p>
+            <p>{{item.other.status}}</p>
+            <div>
+                <p *ngFor="let i of item.other.mem">{{i}}</p>
+                <p *ngIf="item.other.mem.length==0">none</p>
+            </div>
+            <div>
+                <button (click)="blockroom(item.room_no)">Block</button>
+                <button (click)="unbloack_room(item.room_no)">Unblock</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="conformation_outer" *ngIf="conformation.status">
+    <div id="conformation_inner">
+        <p>{{conformation.msg}}</p>
+        <p>Continue?</p>
+        <div>
+            <button (click)="blockroom_cancel()">Go</button>
+            <button (click)="blockroom_cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

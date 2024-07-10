@@ -1,0 +1,75 @@
+#warden{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0px;
+    left: 0px;
+    display: flex;
+}
+#warden_navbar{
+    height: 100vh;
+    width: 15vw;
+    background-color: cadetblue;
+}
+#warden_navbar div:nth-child(1){
+    height: 50px;
+    background-color: rgba(222, 184, 135, 0.505);
+    display: flex;
+    align-items: center;
+    color: rgb(211, 32, 0);
+    font-size: 18px;
+}
+#warden_navbar p{
+    height: 40px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    /* background-color: rgba(222, 184, 135, 0.505); */
+    margin-top: 10px;
+    cursor: pointer;
+}
+#warden_navbar div img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+#warden_navbar div span{
+    margin-left: 35px;
+    cursor: pointer;
+}
+.warden_navbar_selected{
+    background-color: rgba(240, 248, 255, 0.53);
+}
+#warden_content{
+    height: 100vh;
+    width: 85vw;
+    overflow: scroll;
+    background-color: black;
+    color: white;
+    animation: pageanimate 1s alternate;
+}
+app-wardenhome{
+    animation: pageanimate alternate 1s;
+}
+@keyframes pageanimate {
+    0%{
+        width:0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+#warden_content::-webkit-scrollbar{
+    display: none;
+}
+
+#messages{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    cursor: pointer;
+     height: 40px;
+    width: 100%;
+    background-color: transparent;
+}

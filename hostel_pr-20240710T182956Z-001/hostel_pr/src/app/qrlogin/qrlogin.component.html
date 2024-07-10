@@ -1,0 +1,18 @@
+<div id="main">
+    <div id="inner">
+        <div class="opt">
+            <p (click)="changemode('1')" [class]="mode.class['1']">Student</p>
+            <p (click)="changemode('2')" [class]="mode.class['2']">Employee</p>
+        </div>
+        <h3>In/Out</h3>
+        <div id="credentials">
+            <input type="text" placeholder="Your ID" #id>
+        <input type="password" placeholder="Password" #pass>
+        <input type="text" placeholder="Message" #msg>
+        <div>
+            <button (click)="loggin(id.value,pass.value,msg.value)">Set</button>
+        <button (click)="cancel()">Cancel</button>
+        </div>
+        </div>
+    </div>
+</div>

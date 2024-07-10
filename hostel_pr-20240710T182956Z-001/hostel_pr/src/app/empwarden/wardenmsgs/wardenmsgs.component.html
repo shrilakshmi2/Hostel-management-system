@@ -1,0 +1,113 @@
+<div id="metadata">
+    <p>Total Events till now:> {{metadata.total}}</p>
+    <p>Online:> {{metadata.online}}</p>
+    <div id="msg_controllers" *ngIf="warden">
+        <button (click)="indi.status=true">Individual</button>
+        <button (click)="bradcast=true">Broadcast</button>
+    </div>
+</div>
+
+<div id="previous_events">
+<h3>Events</h3>
+    <div id="search_pre_ev">
+        <p (click)="change_mode('1')" [class]="events_search.class['1']">Previous</p>
+        <p (click)="change_mode('2')" [class]="events_search.class['2']">ongoing</p>
+        <p (click)="change_mode('3')" [class]="events_search.class['3']">upcoming</p>
+        <input type="text" placeholder="Search with title" #event_search_btn (keyup.enter)="event_btn.click()">
+        <button #event_btn (click)="search_enets(event_search_btn.value)">Search</button>
+        <button (click)="reset_event()">Reset</button>
+    </div>
+    <div id="search_pre_ev_res">
+        <div class="search_pre_ev_res_card" *ngFor="let item of events_search.res">
+            <img src="/assets/static/events.png" alt="" (click)="view_event_fn(item)">
+            <p (click)="view_event_fn(item)">Title:> {{item.title}}</p>
+            <p (click)="view_event_fn(item)">Date:> {{item.date}}</p>
+            <p *ngIf="item['link']!=''"><a href="{{item['link']}}" target="_blank">click here</a></p>
+            <p *ngIf="item['link']==''">none</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="your_msgs" *ngIf="!warden">
+    <h3>Your messages</h3>
+    <div id="Modes_msgs"> 
+        <p (click)="changemode_msgs('1')" [class]="msgs.class['1']">warden</p>
+        <p (click)="changemode_msgs('2')" [class]="msgs.class['2']">Management</p>
+    </div>
+    <div id="container">
+        <div class="msgs_card" *ngFor="let item of msgs.res;let i=index">
+            <div *ngIf="compare_dates(item['date'],msgs.res[i+1]?.['date'])" class="msg_card_date">
+                <p>{{item['date']}}</p>
+           </div>
+            <div class="msg_card_msg">
+                <div>
+                    <pre class="msg">{{item['msg']}}</pre>
+                    <p class="time">{{item['time']}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- abs -->
+<div id="newmsg_inner" *ngIf="indi.status">
+    <div id="newmsg">
+        <h2 (click)="indi.status=false">X</h2>
+        <h3>Send a New message</h3>
+        <input type="text" placeholder="Person's ID" #id (input)="showsuggestions(id,name,des,email)">
+        <input type="text" placeholder="Name" #name (input)="showsuggestions_name(id,name,des,email)">
+        <input type="text" placeholder="Designation" #des>
+        <input type="text" placeholder="Email" #email>
+        <textarea cols="30" rows="10" placeholder="Type message here" #msg (input)="msg_input(msg)"></textarea>
+        <button (click)="send_msg(id.value,name.value,des.value,email.value,msg.value)" >Send</button>
+    </div>
+</div>
+
+
+
+
+
+<div id="evnets_emmiter_outer" *ngIf="bradcast">
+    <div id="evnets_emmiter_inner">
+        <h3 (click)="bradcast=false">X</h3>
+        <input type="text" placeholder="Event title" #title>
+        <textarea cols="30" rows="10" placeholder="Description" #des></textarea>
+        <input type="text" placeholder="Links *if any" #link>
+        <input type="date" placeholder="Date" #date>
+        <div>
+            <button (click)="broadcast(title.value,des.value,link.value,date.value,$event)">Broadcast</button>
+            <button (click)="bradcast=false">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="showsuggestions" *ngIf="indi.seg.status">
+    <h3 (click)="indi.seg.status=false">X</h3>
+    <div *ngFor="let i of indi.seg.res" class="showsuggestions_card">
+        <div (click)="final_indi(i)">
+            <p>{{i['id']}}</p>
+            <p>{{i['name']}}</p>
+            <p>{{i['des']}}</p>
+            <p>{{i['e_mail']}}</p>
+        </div>
+    </div>
+</div>
+
+<div id="view_event_outer" *ngIf="view_event.status">
+    <div id="view_event_inner">
+        <h3 (click)="cancel_view_event()">X</h3>
+        <p>Event ID:> {{view_event.data['id']}}</p>
+        <p>Event title:> {{view_event.data['title']}}</p>
+        <p>Date:> {{view_event.data['date']}}</p>
+        <pre>Description:> {{view_event.data['des']}}</pre>
+        <p>links :> {{view_event.data['link']}}</p>
+        <div *ngIf="view_event.data['status']!='pre' && warden">
+            <button (click)="cancel_event(view_event.data['id'])">Cancel event</button>
+            <button (click)="reschedule_event()">Reschedule evnet</button>
+        </div>
+    </div>
+</div>

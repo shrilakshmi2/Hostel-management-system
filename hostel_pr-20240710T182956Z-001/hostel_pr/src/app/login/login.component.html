@@ -1,0 +1,19 @@
+<div id="login_main_outer">
+    <div id="main">
+        <div class="opt">
+            <p id="student" (click)="changemode('st')" [class]="mode_class.st" >Student login</p>
+            <p id="employee" (click)="changemode('emp')" [class]="mode_class.emp">Employee login</p>
+        </div>
+        <div id="credentials">
+            <input type="text" placeholder='Enter your USN' #first id="first_crd" (keyup.enter)="second.focus()">
+            <input type="password" placeholder="Password" #second id="second_crd" (keyup.enter)='submit_btn.click()'>
+            <button (click)="submit(first,second,msg)" #submit_btn>Login</button>
+            <p id="msg" #msg></p>
+            <p id="forgot_pass">Forgot password?</p>
+        </div>
+        <div id="applications">
+            <p (click)="application_new()">Apply for stay</p>
+            <p (click)="application_check()">check application status</p>
+        </div>
+    </div>
+</div>
